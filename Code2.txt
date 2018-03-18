@@ -1,0 +1,77 @@
+byte LED[]={2,3,4,5,8,9,10,11},b=0;
+
+  
+  
+void setup()
+{
+  byte i;
+  for(i=0;i<8;i++)
+    pinMode(LED[i],OUTPUT);
+}
+
+
+void loop()
+{
+   byte i,end=0;
+  
+  while(end<2)
+  {
+    for(i=0;i<8;i++)
+     digitalWrite(LED[i],LOW);
+	delay(100);
+    for(i=0;i<8;i++)
+      digitalWrite(LED[i],HIGH);
+    delay(100);
+    end++;
+  }
+  delay(200);
+  end=0;
+  
+  while(end<8)
+  {
+    while(b<8)
+    {
+      for(i=0;i<8;i++)
+        digitalWrite(LED[i],LOW);
+      digitalWrite(LED[b++],HIGH);
+      delay(100);
+    }
+    
+    b=0;
+    end++;
+  }
+  delay(200);
+  end=0;
+  while(end<2)
+  {
+    for(i=0;i<8;i++)
+     digitalWrite(LED[i],LOW);
+	delay(100);
+    for(i=0;i<8;i++)
+      digitalWrite(LED[i],HIGH);
+    delay(100);
+    end++;
+  }
+  delay(200);
+  
+  end=0;
+  b=7;
+  while(end<8)
+  {
+    while(b>0)
+    {
+      for(i=0;i<8;i++)
+        digitalWrite(LED[i],LOW);
+      digitalWrite(LED[b--],HIGH);
+      delay(100);
+      if(b==0)
+      {
+		digitalWrite(LED[b+1],LOW);
+        digitalWrite(LED[b],HIGH);
+        delay(100);
+      }
+     }
+    b=7;
+	end++;  
+  }
+}
